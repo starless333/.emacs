@@ -1,13 +1,6 @@
-
 ;; When Opening emacs it opens in Fullscreen.
 (setq initial-frame-alist '((fullscreen . maximized)))
 (setq default-frame-alist '((fullscreen . maximized)))
-
-;; Smooth Scrolling 
-(setq scroll-step 1
-      scroll-conservatively 10000
-      scroll-margin 1
-      scroll-preserve-screen-position t)
 
 
 
@@ -41,8 +34,6 @@
 (setq auto-save-default nil)
 (setq make-backup-files nil)
 (set-default 'truncate-lines t)
-(global-display-line-numbers-mode)
-(setq display-line-numbers-type 'relative)
 (setq initial-major-mode 'org-mode)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
@@ -137,9 +128,6 @@
   :custom
   (golden-ratio-exclude-modes '(occur-mode)))
 
-(use-package beacon)
-(beacon-mode 1)
-
 ;; Setup rainbow delimiters
 (use-package rainbow-delimiters
   :hook
@@ -168,7 +156,7 @@
 (pdf-tools-install)  ; Standard activation command
 (pdf-loader-install) ; On demand loading, leads to faster startup time
 (blink-cursor-mode 1)
-(setq-default cursor-type '(hbar . 5) )
+(setq-default cursor-type '(box . 5))
 
 (set-cursor-color "#F0DFAF") 
 
@@ -185,8 +173,8 @@
 
 
 ;; This is Transparency 
-(set-frame-parameter nil 'alpha-background 75) ; For current frame
-(add-to-list 'default-frame-alist '(alpha-background . 75)) ; For all new frames henceforth
+(set-frame-parameter nil 'alpha-background 100) ; For current frame
+(add-to-list 'default-frame-alist '(alpha-background . 100)) ; For all new frames henceforth
 
 
 
@@ -249,9 +237,6 @@
 
 
 
-;; For pretty != and <= signs. Once this is installed you will see this different lol.
-(use-package ligature)
-(global-ligature-mode 1)
 (use-package zen-mode)
 (use-package grammarly)
 (use-package emms)
@@ -264,17 +249,18 @@
 
 (add-hook 'emacs-startup-hook
   (lambda ()
-    (load-theme 'gruber-darker)
+    (load-theme 'ef-cherie)
     ))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(ef-cherie))
  '(custom-safe-themes
-   '("e27c9668d7eddf75373fa6b07475ae2d6892185f07ebed037eedf783318761d7" default))
+   '("6fc9e40b4375d9d8d0d9521505849ab4d04220ed470db0b78b700230da0a86c1" "b216e9b72dc8c2b702e4fcfd3c0af2d73c87eba46fd4db824ddb50863447d6a9" "ca47f7b222eb380e3035fb594d52032acd89dae0a49eac3da722a5cd3f485e3b" "0664443859604a53d2257701f034459edf8eab3cc2be50c7d8ae36740fe35578" "049749b8d7585b250e1df9e96a008d1ecd5dc3de6a3d44d153ec8452a81bd0e5" "f12083eec1537fc3bf074366999f0ee04ab23ab3eaba57614785d88b9db2a5d4" "9f27d5afd6d78b40bf1290c10722818e0b90f141fc3758d3c2d284ccb565de15" "355e3439089e3b37bb143afc0a60ce091533fe467db2ab0f2ae34d13be7a47c5" "ffdf8617d6e0f1264e5879d3ac919d0f1d8c91d38f2c769e4fa633ddbab248bf" "515ebca406da3e759f073bf2e4c8a88f8e8979ad0fdaba65ebde2edafc3f928c" "c42587b19ee1c9aa1a9dd1d8ace37ece24ca2a322243035cd6ba07f44fb466db" "6b839977baf10a65d9d7aed6076712aa2c97145f45abfa3bad1de9d85bc62a0e" "ed1b7b4db911724b2767d4b6ad240f5f238a6c07e98fff8823debcfb2f7d820a" "317754d03bb6d85b5a598480e1bbee211335bbf496d441af4992bbf1e777579e" "546862540e7b7d758a64b328bf3ceec7ae98dd87d80551496b45485ec26e05e5" "28d91e89883df5dd87c7da27f6a15e8e41bb92a0c1341eaa9f397ed67b10b21d" "159a29ab0ec5ba4e2811eddd9756aa779b23467723dcbdd223929fbf2dde8954" "9d01a8af1bdd5c79b136dc5eb23b90d53675c3f4cb938dc15c4d8bc98d2bb86e" "063095cf0fe6ed3990546ec77e5d3798a1e2ad5043350063467a71c69518bb24" "841b6a0350ae5029d6410d27cc036b9f35d3bf657de1c08af0b7cbe3974d19ac" "84b3c4fa1bbccd01a173839b7eebc226105fafd6b108f8400995eb79c67c9adf" "702d0136433ca65a7aaf7cc8366bd75e983fe02f6e572233230a528f25516f7e" "4343cbc036f09361b2912119c63573433df725f599bfbdc16fb97f1e4847a08b" "263e3a9286c7ab0c4f57f5d537033c8a5943e69d142e747723181ab9b12a5855" "aa688776604bbddbaba9e0c0d77e8eb5f88d94308f223d1962b6e6b902add6a0" "694dbeb8f98dddfb603a2fe0c04101f3fe457ee49bf90a6a581271e7f9c580c8" "d4b608d76e3a087b124c74c2b642c933d8121b24e53d4bbd5e7327c36cc69ccc" "7776ba149258df15039b1f0aba4b180d95069b2589bc7d6570a833f05fdf7b6d" "0c5d7ffa7cdf8b889342d2cd38f6ddd2cc716561048feca89b17fda56677d6b8" "76ddb2e196c6ba8f380c23d169cf2c8f561fd2013ad54b987c516d3cabc00216" "b11edd2e0f97a0a7d5e66a9b82091b44431401ac394478beb44389cf54e6db28" "6bdc4e5f585bb4a500ea38f563ecf126570b9ab3be0598bdf607034bb07a8875" "04aa1c3ccaee1cc2b93b246c6fbcd597f7e6832a97aaeac7e5891e6863236f9f" "d78df7afed952636ca40cfcaeab34353f872f74587c258618ec32ad64d545229" "e27c9668d7eddf75373fa6b07475ae2d6892185f07ebed037eedf783318761d7" default))
  '(package-selected-packages
-   '(quelpa soundklaus emms-soundcloud emms-player-simple-mpv flycheck lsp-java which-key lsp-ui lsp multiple-cursors zen-mode vertico tree-sitter-langs rainbow-delimiters projectile pdf-tools orderless ligature java-snippets gruber-darker-theme grammarly golden-ratio emms dashboard consult company beacon)))
+   '(fireplace ef-themes evil color-theme-sanityinc-tomorrow pyenv-mode pyvenv leetcode quelpa emms-soundcloud emms-player-simple-mpv flycheck lsp-java which-key lsp-ui lsp multiple-cursors zen-mode vertico tree-sitter-langs rainbow-delimiters projectile pdf-tools orderless java-snippets gruber-darker-theme grammarly golden-ratio emms dashboard consult company)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -283,8 +269,9 @@
  )
 
 (use-package multiple-cursors)
-;;(global-set-key (kbd "C-r") 'mc/edit-lines)
+(global-set-key (kbd "C-r") 'mc/edit-lines)
 
+ 
 (use-package lsp-ui)
 (use-package which-key :config (which-key-mode))
 (use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
@@ -293,25 +280,15 @@
   :ensure t
   :config
   (add-hook 'after-init-hook #'global-flycheck-mode))
+(setq flycheck-check-syntax-automatically '(save))
 (lsp-completion-mode 1)
 
-(use-package soundklaus
-  :ensure t
-  :commands
-  (soundklaus-activities
-   soundklaus-connect
-   soundklaus-my-favorites
-   soundklaus-my-playlists
-   soundklaus-my-tracks
-   soundklaus-playlists
-   soundklaus-tracks))
 
 (emms-all)
 (setq emms-player-list '(emms-player-vlc)
       emms-info-functions '(emms-info-native
                             emms-info-metaflac
                             emms-info-ogginfo))
-(emms-streams)
 
 (unless (package-installed-p 'quelpa)
   (with-temp-buffer
@@ -323,3 +300,65 @@
 (load-file "~/.emacs.d/empv.el")
 (yas-global-mode 1)
 (rainbow-delimiters-mode 1)
+
+(use-package fireplace)
+
+(require 'pyvenv)
+(pyvenv-activate "~/.emacs.d/venv")
+
+(use-package leetcode)
+(setq leetcode-prefer-language "java")
+
+
+(setq-default c-basic-offset 4)
+(setq-default c++-basic-offset 4)
+
+(use-package evil)
+(evil-mode -1)
+
+;; Set the default tab width to 4 spaces
+(setq-default tab-width 4)
+
+;; Use spaces instead of tabs
+(setq-default indent-tabs-mode nil)
+
+;; Ensure that the above settings apply to all programming modes
+(defun my-setup-indent (n)
+  ;; java/c/c++
+  (setq-local c-basic-offset n)
+  ;; web development
+  (setq-local coffee-tab-width n) ; coffeescript
+  (setq-local javascript-indent-level n) ; javascript-mode
+  (setq-local js-indent-level n) ; js-mode
+  (setq-local js2-basic-offset n) ; js2-mode, in latest js2-mode, it's js-switch-indent-offset
+  (setq-local web-mode-markup-indent-offset n) ; web-mode, html tag in html file
+  (setq-local web-mode-css-indent-offset n) ; web-mode, css in html file
+  (setq-local web-mode-code-indent-offset n) ; web-mode, js code in html file
+  (setq-local css-indent-offset n) ; css-mode
+  )
+
+(setq-default indent-line-function 'insert-tab)
+
+;; Apply the settings to common programming modes
+(add-hook 'prog-mode-hook (lambda () (my-setup-indent 4)))
+
+;; Suggestions from official docs for performance
+(setq gc-cons-threshold 100000000)
+(setq lsp-completion-provider :capf)
+(setq lsp-idle-delay 1.750)
+(setq lsp-log-io nil)
+
+;; Annoying stuff
+(setq lsp-enable-links nil)
+(setq lsp-signature-render-documentation nil)
+(setq lsp-headerline-breadcrumb-enable nil)
+(setq lsp-ui-doc-enable nil)
+(setq lsp-completion-enable-additional-text-edit nil)
+(setq lsp-headerline-breadcrumb-mode -1)
+
+(defun my-dired-here ()
+  "Open Dired in the current directory without asking for a path."
+  (interactive)
+  (dired default-directory))
+
+(global-set-key (kbd "C-x d") 'my-dired-here)
